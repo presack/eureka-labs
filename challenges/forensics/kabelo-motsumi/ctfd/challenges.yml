@@ -1,0 +1,561 @@
+# Forensics - Kabo Seretse
+# Challenge set: Kabelo Motsumi — Procurement Fraud
+# Author: presack
+
+# ============================================================
+# PHASE 1 — DUMPSTER DIVE AND BLOCKCHAIN TRACE (100 pts each)
+# ============================================================
+
+- name: "BTC Address from Trash"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    Your investigation begins with a physical search of discarded materials at Kagiso Supplies in Gaborone.
+
+    Search the trash provided by your instructor. Among the debris you find a handwritten note.
+
+    What Bitcoin address is written on the note?
+  value: 100
+  type: standard
+  state: visible
+  flags:
+    - type: static
+      content: "3C9akyM5Fb8Av3V2ouVRzcS3ZBJ6tfGoLx"
+      data: case_insensitive
+  hints:
+    - content: "Check the crumpled note in the trash bin. Copy the address exactly — it begins with 3C9a."
+      cost: 10
+
+- name: "Primary Exchange"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    You have a Bitcoin address. Now trace it.
+
+    Open a public blockchain explorer (blockstream.info or blockchain.com) and search for the address. Examine the transaction history: funds arrive at this address and are later swept onward. Follow the sweep pattern to identify which cryptocurrency exchange holds the destination wallet.
+
+    What exchange is the destination for the funds leaving this address?
+  value: 100
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "BTC Address from Trash"
+  flags:
+    - type: static
+      content: "Luno"
+      data: case_insensitive
+  hints:
+    - content: "Look at where the BTC goes after it arrives at the deposit address. Large custodial wallets with regular sweep patterns indicate an exchange. Consider which exchanges operate in southern Africa."
+      cost: 15
+
+- name: "Second Exchange"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    The blockchain trail shows a second outbound address that traces to a different exchange in a different legal jurisdiction.
+
+    What is that second exchange?
+
+    Note: this exchange is U.S.-regulated. Obtaining records requires routing a request through Egmont — FIA Botswana submits to FinCEN, which compels the exchange under the Bank Secrecy Act. Submit that request to your instructor now alongside your Luno request. The return will arrive later in the investigation.
+  value: 100
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "Primary Exchange"
+  flags:
+    - type: static
+      content: "Coinbase"
+      data: case_insensitive
+  hints:
+    - content: "Follow the outgoing sweep to its second-hop destination address. The address begins bc1q — a native SegWit format used by several major exchanges. Which U.S.-based exchange is most widely used in this region?"
+      cost: 15
+
+# ==============================================================
+# PHASE 2 — EXCHANGE LEGAL RETURN AND BURNER ACCOUNT (100 pts)
+# ==============================================================
+
+- name: "Luno Account Email"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    Your instructor has distributed the Luno legal process return and the burner account search warrant return.
+
+    Download the burner account search warrant return from the files server:
+    `/files/kabelo-motsumi/kabo-seretse-operational.zip`
+
+    Open the Luno legal process return. What email address is registered to the Luno account linked to the BTC deposit address?
+  value: 100
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "Second Exchange"
+  flags:
+    - type: static
+      content: "k.seretse@kgale-mail.test"
+      data: case_insensitive
+  hints:
+    - content: "Open the Luno return PDF. The registered email is in the Account Information section near the top."
+      cost: 10
+
+- name: "Luno Account Created"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    Still on the Luno legal process return.
+
+    When was this Luno account created? Enter the date as it appears in the document.
+  value: 100
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "Luno Account Email"
+  flags:
+    - type: static
+      content: "28 August 2025"
+      data: case_insensitive
+    - type: static
+      content: "August 28, 2025"
+      data: case_insensitive
+    - type: static
+      content: "2025-08-28"
+      data: case_insensitive
+  hints:
+    - content: "The account creation date is in the Account Information section of the Luno return, directly below the registered email."
+      cost: 10
+
+- name: "Residential IP Slip"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    Open the burner account search warrant return (`kabo-seretse-operational.zip`). Navigate to the Google Account SubscriberInfo folder and open the SubscriberInfo HTML file.
+
+    The IP Activity table shows multiple login sessions. Most share a consistent pattern — the same ASN, routed through servers in different countries. One session does not fit this pattern at all.
+
+    Use CyberChef (*Extract IP addresses* → *Unique*) or manual review to isolate the distinct IPs, then look each one up on bgp.he.net or ipinfo.io.
+
+    What is the IP address that breaks the pattern?
+  value: 100
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "Luno Account Created"
+  flags:
+    - type: static
+      content: "41.138.76.55"
+      data: case_insensitive
+  hints:
+    - content: "Most IPs in the login table belong to the same ASN (look for AS39351). One IP geolocates to Gaborone, Botswana from a residential ISP rather than a commercial hosting provider."
+      cost: 15
+
+- name: "ISP Subscriber Name"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    You have identified a residential IP that breaks the VPN pattern in the burner account's login records.
+
+    Your instructor has now distributed the Orange Botswana subscriber return for that IP address.
+
+    What full name does the subscriber record attribute to IP address 41.138.76.55?
+  value: 100
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "Residential IP Slip"
+  flags:
+    - type: static
+      content: "Kabelo Motsumi"
+      data: case_insensitive
+  hints:
+    - content: "The subscriber return is a single-page document. The Full Name field is in the Subscriber Record section."
+      cost: 10
+
+# ================================================================
+# PHASE 3 — BURNER ACCOUNT CONTENT AND CORRELATION (150 pts each)
+# ================================================================
+
+- name: "VPN Provider"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    Continue in the `kabo-seretse-operational` search warrant return.
+
+    Open the search history (`My Activity/Search/MyActivity.html`). The burner account's search activity is almost entirely operational — opsec research, not personal browsing.
+
+    What VPN provider does the search history show the subject downloading and investigating?
+  value: 150
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "ISP Subscriber Name"
+  flags:
+    - type: static
+      content: "Mullvad"
+      data: case_insensitive
+  hints:
+    - content: "Look for searches related to VPN download and no-log VPN providers. The provider name appears directly in search terms. Cross-reference with the ASN you identified on the Luno return login IPs."
+      cost: 10
+
+- name: "Linked Real Account"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    Still in the `kabo-seretse-operational` search warrant return.
+
+    Navigate to the Google Account SubscriberInfo folder. Alongside the SubscriberInfo file you will find three account association files: LinkedByCookies, LinkedByPhone, and LinkedBySecondaryEmail.
+
+    The LinkedByCookies file records Google accounts that shared an active browser session with the burner account on the same physical device.
+
+    What email address appears in the LinkedByCookies file?
+  value: 150
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "VPN Provider"
+  flags:
+    - type: static
+      content: "kabelo.motsumi@kgale-mail.test"
+      data: case_insensitive
+  hints:
+    - content: "Open the LinkedByCookies CSV file in the GoogleAccountTargetAssociation folder. The file has two columns: email address and Gaia ID. Also check LinkedByPhone and LinkedBySecondaryEmail — all three should point to the same account."
+      cost: 10
+
+# ============================================================
+# PHASE 4 — COINBASE EGMONT RETURN (150 pts each)
+# ============================================================
+
+- name: "Coinbase KYC Name"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    Your instructor has now distributed the Coinbase Egmont return — the result of the FIA Botswana → FinCEN request submitted in Phase 1.
+
+    Unlike the Luno account, which was opened under a pseudonym, the Coinbase account was opened with full KYC documentation including a government-issued passport.
+
+    What is the full registered name as it appears in the Egmont return?
+  value: 150
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "Linked Real Account"
+  flags:
+    - type: static
+      content: "Kabelo Kefilwe Motsumi"
+      data: case_insensitive
+  hints:
+    - content: "The KYC name is in the Account Information section. It includes a middle name that does not appear on the Luno return or in the Google account data — enter all three names."
+      cost: 10
+
+- name: "Coinbase BTC Address"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    Still on the Coinbase Egmont return.
+
+    What BTC receive address is registered to this Coinbase account?
+
+    This is the same second-hop address you identified during blockchain analysis in Phase 1. Confirm the match.
+  value: 150
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "Coinbase KYC Name"
+  flags:
+    - type: static
+      content: "bc1qa7fp3nt2m8wjsck5hg4vy1ed9r0xzqb6l8up"
+      data: case_insensitive
+  hints:
+    - content: "The BTC Receive Address is in the Account Information section of the Egmont return. It starts with bc1q."
+      cost: 10
+
+- name: "Wire Account Ending"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    The Egmont return shows that BTC received at the Coinbase address was liquidated to USD and wired to a bank account at Stanbic Bank Botswana across five separate transactions.
+
+    What are the last four digits of the destination bank account?
+  value: 150
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "Coinbase BTC Address"
+  flags:
+    - type: static
+      content: "4219"
+      data: case_insensitive
+  hints:
+    - content: "The wire beneficiary account ending appears in the Account Information section and again in the Beneficiary column of the transaction table."
+      cost: 10
+
+# ===================================================================
+# PHASE 5 — PERSONAL ACCOUNT: IDENTITY AND LOGIN RECORDS (200 pts)
+# ===================================================================
+
+- name: "Personal Account Name"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    You now have three independent bridges to a real Google account: the burner's LinkedByCookies correlation, the ISP subscriber name, and the Coinbase KYC name. The initials "KM" from the trash note resolve to the same person.
+
+    Your instructor has distributed the `kabelo-motsumi-personal` Google search warrant return.
+
+    Open the Google Account SubscriberInfo HTML file. What is the registered full name on this account?
+  value: 200
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "Wire Account Ending"
+  flags:
+    - type: static
+      content: "Kabelo Motsumi"
+      data: case_insensitive
+  hints:
+    - content: "Open the SubscriberInfo HTML file in the account's GoogleAccount.SubscriberInfo folder. The name is at the top of the subscriber information section."
+      cost: 10
+
+- name: "Subject Employer"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    Your instructor has also distributed a LinkedIn profile for the subject.
+
+    The LinkedIn profile and the personal account subscriber data both confirm where the subject works. What organisation is that?
+  value: 200
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "Personal Account Name"
+  flags:
+    - type: static
+      content: "TlouKago Construction Supplies"
+      data: case_insensitive
+  hints:
+    - content: "The employer appears in the LinkedIn profile under Experience, and in the personal account's alternate email address field in the SubscriberInfo."
+      cost: 10
+
+- name: "VPN Cutover Date"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    The personal account's IP Activity table tells a story in chronological order. Early logins come from a residential IP. At a specific point, the IP pattern changes — all subsequent logins come from VPN exits.
+
+    The Coinbase Egmont return also states this date explicitly in its login IP footnote.
+
+    On what date did the VPN cutover occur? Enter in the format: DD Month YYYY.
+  value: 200
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "Subject Employer"
+  flags:
+    - type: static
+      content: "23 May 2025"
+      data: case_insensitive
+    - type: static
+      content: "May 23, 2025"
+      data: case_insensitive
+    - type: static
+      content: "2025-05-23"
+      data: case_insensitive
+  hints:
+    - content: "Check the Coinbase Egmont return login IP footnote — it states the cutover date directly. Then cross-reference with the personal account's IP Activity table and the search history."
+      cost: 15
+
+# ============================================================
+# PHASE 6 — PERSONAL ACCOUNT: GMAIL (200 pts each)
+# ============================================================
+
+- name: "Vendor Email Address"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    Open the personal account Gmail export. Individual emails are in `kabelo-motsumi-personal/Mail/html/` — open them in any web browser.
+
+    A recurring email thread connects the subject directly to a contact at Kagiso Supplies. This vendor is at the centre of the payment arrangement.
+
+    What email address sends messages in this thread?
+  value: 200
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "VPN Cutover Date"
+  flags:
+    - type: static
+      content: "tshepiso.kgosi@kagisosupp.test"
+      data: case_insensitive
+  hints:
+    - content: "Search for emails from the kagisosupp.test domain. Look for messages with subjects like 'Revised Quote', 'Adjusted copy', and 'Re: batch'. Cross-reference the sender name with the LinkedIn profile distributed in Phase 5."
+      cost: 15
+
+- name: "Implication Phrase"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    One message in the Kagiso Supplies vendor thread contains an explicit instruction to move communications away from work systems to personal channels.
+
+    This is direct evidence that the sender knew the communications were improper and was managing exposure.
+
+    What is the exact phrase used in that instruction?
+  value: 200
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "Vendor Email Address"
+  flags:
+    - type: static
+      content: "keep off the work thread"
+      data: case_insensitive
+  hints:
+    - content: "Look at the email with subject 'Re: batch', sent in May 2025. The instruction is in the body of that message."
+      cost: 10
+
+# ============================================================
+# PHASE 7 — PERSONAL ACCOUNT: DRIVE AND KEEP (250 pts each)
+# ============================================================
+
+- name: "Income Tracker Filename"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    Open the Drive export in `kabelo-motsumi-personal/Drive/`. Navigate to the Personal Admin folder.
+
+    The subject maintained a private spreadsheet recording payments received by date, amount, and source. What is the filename of that spreadsheet?
+  value: 250
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "Implication Phrase"
+  flags:
+    - type: static
+      content: "side_income_tracker.xlsx"
+      data: case_insensitive
+  hints:
+    - content: "The file is in Drive/Personal Admin/. It is an Excel spreadsheet (.xlsx). Open it and confirm it contains dated payment records corroborating the bank alerts and Orange Money notifications in Gmail."
+      cost: 10
+
+- name: "Wallet Recovery Note"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    Open the Keep export in `kabelo-motsumi-personal/Keep/`.
+
+    One note contains a 12-word sequence — each word is a common English dictionary word. Together they form a BIP39 mnemonic: the master recovery phrase for a Bitcoin wallet. The wallet this phrase controls is the same one whose address was on the handwritten note in the trash.
+
+    What is the title of this Keep note?
+  value: 250
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "Income Tracker Filename"
+  flags:
+    - type: static
+      content: "Backup"
+      data: case_insensitive
+  hints:
+    - content: "The note title is deliberately innocuous. Look for a note whose content is twelve ordinary English dictionary words separated by spaces — not a sentence, not a list. BIP39 recovery phrases are always exactly 12 or 24 words."
+      cost: 20
+
+# ============================================================
+# PHASE 8 — BEHAVIORAL TRAIL (250 pts each)
+# ============================================================
+
+- name: "First Legal Search Date"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    Open the search history in `kabelo-motsumi-personal/My Activity/Search/MyActivity.html`.
+
+    The subject conducted a series of searches about the DCEC (Directorate on Corruption and Economic Crime) beginning at a specific point in time. These searches mark when the subject first became concerned about legal exposure.
+
+    On what date did the first DCEC-related search occur? Enter in the format: DD Month YYYY.
+  value: 250
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "Wallet Recovery Note"
+  flags:
+    - type: static
+      content: "23 May 2025"
+      data: case_insensitive
+    - type: static
+      content: "May 23, 2025"
+      data: case_insensitive
+    - type: static
+      content: "2025-05-23"
+      data: case_insensitive
+  hints:
+    - content: "Search for 'DCEC' in the MyActivity.html file (Ctrl+F in a browser). Note the date of the earliest matching entry. Compare it with the VPN cutover date."
+      cost: 10
+
+- name: "Consciousness of Guilt"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    Open the Gemini activity in `kabelo-motsumi-personal/My Activity/`.
+
+    Among the Gemini AI prompts submitted by the subject, one — sent in June 2025, after the VPN switch had already occurred — directly models an investigation against his own conduct.
+
+    What is the exact text of that prompt?
+  value: 250
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "First Legal Search Date"
+  flags:
+    - type: static
+      content: "what does a procurement fraud investigation typically look for"
+      data: case_insensitive
+  hints:
+    - content: "There are three forensically relevant Gemini prompts in the activity. The one you want was submitted in June 2025 and is the most direct about the subject's own situation. Enter the prompt text exactly as written."
+      cost: 15
+
+# ============================================================
+# BONUS (400 pts, manual scoring)
+# ============================================================
+
+- name: "Case Summary"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    **Bonus — open analyst question. Submit your written response to your instructor for scoring.**
+
+    Write a full investigative case summary connecting every forensic link from the physical lead at Kagiso Supplies to the Gmail evidence.
+
+    Your summary should address:
+
+    - What the scheme was and who was involved
+    - How payments moved (channels, amounts, destination accounts)
+    - How the subject attempted to conceal his activity
+    - Where his operational security failed and why
+    - What evidence you would prioritise in a criminal referral to the DCEC, and why
+
+    Points are awarded for analytical depth, correct identification of the complete forensic chain, and quality of the criminal referral argument.
+  value: 400
+  type: manual
+  state: visible
+  requirements:
+    prerequisites:
+      - "Consciousness of Guilt"
+  hints:
+    - content: "Walk the chain from first to last: trash note → blockchain → Luno → burner account → ISP return → cookie correlation → Coinbase Egmont → personal account → Gmail → Drive → behavioral trail. Every link reinforces the others. The most powerful evidence is self-authored."
+      cost: 0

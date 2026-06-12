@@ -1,0 +1,19 @@
+name: "Filter Product Name"
+author: presack
+category: "OSINT - School Proxy"
+description: |
+  Run ViewDNS enrichment on `frogiesarcade.win` to enumerate its subdomains.
+
+  One subdomain is named after a **real commercial K-12 web filtering product** widely deployed in schools — the very type of filter this proxy network is designed to bypass.
+
+  What is the product name?
+value: 200
+type: standard
+state: visible
+flags:
+  - type: static
+    content: "securly"
+    data: case_insensitive
+hints:
+  - content: "Run `enrich vd` on frogiesarcade.win and scan the subdomain list. Look for a name that matches a commercial web filter vendor — not a generic word."
+    cost: 20

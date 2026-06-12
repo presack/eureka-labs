@@ -1,0 +1,19 @@
+name: "November Registrar"
+author: presack
+category: "OSINT - School Proxy"
+description: |
+  `frogiesarcade.win` has 5 historical IPs. Run ViewDNS reverse IP on each one.
+
+  One historical IP (`204.12.217.138`) shows three domains registered within 9 days of each other, all at the same registrar.
+
+  What registrar did the operator use for all three?
+value: 300
+type: standard
+state: visible
+flags:
+  - type: static
+    content: "Spaceship"
+    data: case_insensitive
+hints:
+  - content: "Look at the WHOIS data for jorkingit.shop, jorkinschool.online, and lsrecat.cfd. All three share the same registrar."
+    cost: 25

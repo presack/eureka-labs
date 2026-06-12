@@ -1,0 +1,17 @@
+name: "School Proxy Name"
+author: presack
+category: "OSINT - School Proxy"
+description: |
+  A subdomain of `mathteachersforhire.shop` shares its name with a well-known open-source browser proxy project used specifically to bypass K-12 web content filters.
+
+  What is the name of that proxy project?
+value: 50
+type: standard
+state: visible
+flags:
+  - type: static
+    content: "rammerhead"
+    data: case_insensitive
+hints:
+  - content: "Run ViewDNS enrichment to list subdomains. One of them is the proxy name you're looking for."
+    cost: 10

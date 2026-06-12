@@ -1,0 +1,17 @@
+name: "Subdomain Count"
+author: presack
+category: "OSINT - School Proxy"
+description: |
+  Run ViewDNS enrichment on `frogiesarcade.win`: `enrich vd`
+
+  How many subdomains does ViewDNS find for `frogiesarcade.win`?
+value: 250
+type: standard
+state: visible
+flags:
+  - type: static
+    content: "27"
+    data: case_insensitive
+hints:
+  - content: "Run `enrich vd` on frogiesarcade.win and count the full subdomain list returned."
+    cost: 20

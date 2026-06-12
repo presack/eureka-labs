@@ -1,0 +1,17 @@
+name: "Email Provider"
+author: presack
+category: "OSINT - School Proxy"
+description: |
+  The operator configured real email on their primary domain `frogiesarcade.win` — not just forwarding.
+
+  What **email service provider** do the MX records point to?
+value: 150
+type: standard
+state: visible
+flags:
+  - type: static
+    content: "Zoho"
+    data: case_insensitive
+hints:
+  - content: "Check the MX records in the StealthOps output for frogiesarcade.win. The mail server hostname identifies the provider."
+    cost: 10

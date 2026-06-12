@@ -1,0 +1,17 @@
+name: "Load Balancer Pool Size"
+author: presack
+category: "OSINT - School Proxy"
+description: |
+  The subdomain `use.frogiesarcade.win` has an unusual DNS configuration — it returns **multiple A records** simultaneously, distributing traffic across a pool of servers.
+
+  How many IP addresses are in the round-robin pool?
+value: 200
+type: standard
+state: visible
+flags:
+  - type: static
+    content: "5"
+    data: case_insensitive
+hints:
+  - content: "Query `use.frogiesarcade.win` directly in StealthOps and count the A records returned. Each one is a separate server IP."
+    cost: 15

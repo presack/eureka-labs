@@ -1,0 +1,17 @@
+name: "Registrant State"
+author: presack
+category: "OSINT - School Proxy"
+description: |
+  Query `frogiesarcade.win` in StealthOps. Unlike the satellite domains (which use full Namecheap WHOIS privacy), this domain's WHOIS reveals a US state in the registrant address.
+
+  What state is the registrant located in?
+value: 150
+type: standard
+state: visible
+flags:
+  - type: static
+    content: "Wisconsin"
+    data: case_insensitive
+hints:
+  - content: "The WHOIS section in StealthOps shows partial registrant info. Look at the address fields — privacy redaction doesn't always scrub the state/region."
+    cost: 15

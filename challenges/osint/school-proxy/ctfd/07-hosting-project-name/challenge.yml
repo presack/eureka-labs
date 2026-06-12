@@ -1,0 +1,17 @@
+name: "Hosting Project Name"
+author: presack
+category: "OSINT - School Proxy"
+description: |
+  `frogiesarcade.win` has a non-standard TXT record — not SPF, not DKIM, not a site verification token — that names the operator's own label for this hosting project.
+
+  What is the project name? (Enter exactly as written in the record.)
+value: 150
+type: standard
+state: visible
+flags:
+  - type: static
+    content: "school-helper101"
+    data: case_insensitive
+hints:
+  - content: "Look in the TXT records section for a record in the format `hosting-site=<name>`. That's the operator's own label."
+    cost: 20

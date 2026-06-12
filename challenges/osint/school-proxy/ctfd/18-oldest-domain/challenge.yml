@@ -1,0 +1,17 @@
+name: "Oldest Domain"
+author: presack
+category: "OSINT - School Proxy"
+description: |
+  Query `maddox.page`.
+
+  This is the oldest domain in the operator's entire infrastructure. What year was it registered?
+value: 300
+type: standard
+state: visible
+flags:
+  - type: static
+    content: "2023"
+    data: case_insensitive
+hints:
+  - content: "Check the WHOIS registration date in the StealthOps output for maddox.page."
+    cost: 15

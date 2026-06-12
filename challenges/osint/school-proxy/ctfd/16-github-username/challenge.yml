@@ -1,0 +1,19 @@
+name: "GitHub Username"
+author: presack
+category: "OSINT - School Proxy"
+description: |
+  Query `ubghub.org` and run URLScan enrichment: `enrich us`
+
+  The URLScan history contains a Cloudflare Pages preview URL in the format `<username>-github-io-personal-*.pages.dev`.
+
+  What is the GitHub username?
+value: 400
+type: standard
+state: visible
+flags:
+  - type: static
+    content: "maddox05"
+    data: case_insensitive
+hints:
+  - content: "Cloudflare Pages preview URLs are generated from the GitHub username when a GitHub Pages site is deployed through Cloudflare. Look carefully at the full URL patterns in the scan results."
+    cost: 40

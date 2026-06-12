@@ -1,0 +1,17 @@
+name: "Froggies IP"
+author: presack
+category: "OSINT - School Proxy"
+description: |
+  After running enrichment (`enrich vd us`), URLScan results reveal that one subdomain resolves to a **different IP address** than the main domain — a second server entirely.
+
+  The subdomain is `froggies.mathteachersforhire.shop`. What IP does it resolve to?
+value: 100
+type: standard
+state: visible
+flags:
+  - type: static
+    content: "69.164.251.210"
+    data: case_insensitive
+hints:
+  - content: "URLScan historical scans record what IP a domain resolved to at scan time. Look at the froggies subdomain entries."
+    cost: 15

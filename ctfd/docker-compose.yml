@@ -1,0 +1,40 @@
+services:
+  ctfd:
+    image: ctfd/ctfd:latest
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      - DATABASE_URL=mysql+pymysql://ctfd:${DB_PASSWORD}@db/ctfd
+      - SECRET_KEY=${SECRET_KEY}
+      - WORKERS=1
+      - LOG_FOLDER=/var/log/CTFd
+      - UPLOAD_FOLDER=/var/uploads
+      - REVERSE_PROXY=true
+    volumes:
+      - ctfd_uploads:/var/uploads
+      - ctfd_logs:/var/log/CTFd
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db:
+    image: mariadb:10.11
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=ctfd
+      - MYSQL_USER=ctfd
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  ctfd_uploads:
+  ctfd_logs:
+  db_data:

@@ -1,0 +1,19 @@
+name: "Attribution Domain"
+author: presack
+category: "OSINT - School Proxy"
+description: |
+  Run URLScan enrichment on `frogiesarcade.win`: `enrich us`
+
+  One domain appears repeatedly across multiple scan sessions in the URLScan history.
+
+  What is it?
+value: 300
+type: standard
+state: visible
+flags:
+  - type: static
+    content: "ubghub.org"
+    data: case_insensitive
+hints:
+  - content: "Look through the URLScan historical scans for frogiesarcade.win. One external domain shows up in multiple scans — not a subdomain, a different root domain entirely."
+    cost: 30

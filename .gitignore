@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Raw case study source material (ported content lives in challenges/)
+case-studies/
+
+# CTFd secrets
+ctfd/.env

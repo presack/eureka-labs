@@ -1,0 +1,17 @@
+name: "Vocaloid"
+author: presack
+category: "OSINT - School Proxy"
+description: |
+  Several subdomains of `frogiesarcade.win` are named after characters from a specific Japanese music franchise.
+
+  What is the name of that franchise?
+value: 250
+type: standard
+state: visible
+flags:
+  - type: static
+    content: "Vocaloid"
+    data: case_insensitive
+hints:
+  - content: "Look for subdomains with Japanese-sounding names — miku, neru, teto. What do those names have in common?"
+    cost: 25

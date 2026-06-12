@@ -1,0 +1,17 @@
+name: "Personal Domain"
+author: presack
+category: "OSINT - School Proxy"
+description: |
+  URLScan results for `ubghub.org` also surface the operator's personal domain — a short domain ending in `.page`.
+
+  What is it?
+value: 300
+type: standard
+state: visible
+flags:
+  - type: static
+    content: "maddox.page"
+    data: case_insensitive
+hints:
+  - content: "Look through URLScan results for ubghub.org for domains that don't look like infrastructure — something short and personal-sounding."
+    cost: 25
