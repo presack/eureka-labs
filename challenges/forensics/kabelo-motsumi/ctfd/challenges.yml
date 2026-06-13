@@ -184,7 +184,45 @@
     - content: "The account creation date is in the Account Information section of the Luno return, directly below the registered email."
       cost: 10
 
-- name: "Residential IP Slip"
+- name: "Luno IP Assessment"
+  author: presack
+  category: "Kickback"
+  description: |
+    The Luno return also contains IP login records. Look up each IP address to determine what service or provider it belongs to.
+
+    What VPN service are all of the IP addresses in the Luno return associated with?
+  value: 100
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "Luno Account Created"
+  flags:
+    - type: static
+      content: "Mullvad"
+      data: case_insensitive
+  hints:
+    - content: "Look up each IP on ipinfo.io or bgp.he.net. Check the ASN and organization name — they all point to the same provider."
+      cost: 10
+
+- name: "Next Legal Steps"
+  author: presack
+  category: "Kickback"
+  description: |
+    Those IP addresses are all Mullvad and do not appear to be useful to your investigation, although they do give you an idea your subject has some level of tradecraft. The return did still have one great piece of information, though. Again speak with an instructor about what account or identifier you would like to serve legal process on, and they will provide the flag for you to advance.
+  value: 100
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "Luno IP Assessment"
+  flags:
+    - type: static
+      content: "Google"
+      data: case_insensitive
+  hints: []
+
+- name: "No one's perfect"
   author: presack
   category: "Kickback"
   description: |
@@ -200,7 +238,7 @@
   state: visible
   requirements:
     prerequisites:
-      - "Luno Account Created"
+      - "Next Legal Steps"
   flags:
     - type: static
       content: "41.138.76.55"
