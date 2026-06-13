@@ -20,37 +20,26 @@
 
     ## Starting Point
 
-    Physical examination of discarded materials at Kagiso Supplies premises, Gaborone. Your instructor will hand these to you.
+    Physical examination of discarded materials (trash cover) at Kagiso Supplies premises, Gaborone. Your instructor will direct you to this garbage. (Don't worry, it's not smelly or dirty like normal garbage!)
 
     ## Evidence Files
 
-    When your instructor advises, download the burner account Google search warrant return from the files server:
+    As your investigation progresses, you will uncover information that will lead to you requesting legal process.
 
-    ```
-    /files/kabelo-motsumi/kabo-seretse-operational.zip
-    ```
-
-    Additional search warrant returns and documents will be distributed physically at appropriate phases.
-
+    
     ## Exercise Structure
 
-    Eight phases, each unlocking the next. Work them in order.
+    This exercise will be multiple phases, guided by your instructors. You will use skills learned in this course such as blockchain analysis, IP/Web infrastructure analysis, Egmont requests, and serving/analyzing legal process.
 
-    | Phase | Focus |
-    |---|---|
-    | 1 | Physical lead and blockchain trace |
-    | 2 | Exchange legal return and burner account baseline |
-    | 3 | Burner account content and account correlation |
-    | 4 | Coinbase Egmont return |
-    | 5 | Personal account: identity and login records |
-    | 6 | Personal account: Gmail |
-    | 7 | Personal account: Drive and Keep |
-    | 8 | Behavioral trail |
+    Type "flag" to begin your invesgitation!
 
-    Read this, then proceed to Phase 1.
-  value: 0
+  value: 10
   type: standard
   state: visible
+  flags:
+    - type: static
+      content: "flag"
+      data: case_insensitive
   hints: []
 
 # ============================================================
