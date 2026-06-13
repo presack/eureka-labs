@@ -4,9 +4,11 @@ category: "OSINT - School Proxy"
 description: |
   ## Scenario
 
-  Your school district's network team has noticed students accessing content that bypasses the web filter. One student's traffic was flagged terminating at **mathteachersforhire.shop**. The domain name sounds innocuous — but something doesn't add up.
+  Teachers at your child's school have noticed students accessing content that bypasses the web filter in order to play games. One teacher noticed a website used for this purpose: **mathteachersforhire.shop**. The domain name sounds innocuous - but something doesn't add up.
 
-  Your job is to investigate this domain, characterize what it's actually doing, and map as much of the related infrastructure as you can find. A full investigation will take you through six pivot levels, multiple IP addresses, and ultimately to a GitHub username — all using passive, tool-assisted reconnaissance only.
+  The IT admin is new and is at a loss for what to do to research this domain and possibly find others that should be blocked. However, he heard that you recently had some FBI cyber training and has asked for your help. Your job is to investigate this domain, characterize what it's actually doing, and map as much of the related infrastructure as you can find.
+
+  A full investigation for this challenge will take you through several pivots on this infrastructure, MANY domains and IP addresses. Ultimately, if you are successful in your mission, you will even find a GitHub username - all using passive, tool-assisted reconnaissance only.
 
   ## Starting Point
 
@@ -16,16 +18,16 @@ description: |
 
   ## Tools
 
-  Use StealthOps console mode.
+  The following sites are your primary research tools. You can use them directly in your browser, or use **[StealthOps](https://bw.stealthops.dev)** — a web-based OSINT platform that queries many of these sources from a single interface.
 
-  | Alias | Provider | Why |
+  | Tool | URL | What it's good for |
   |---|---|---|
-  | `vd` | ViewDNS | Subdomains, reverse IP, IP history |
-  | `dd` | DNSDumpster | DNS map |
-  | `us` | URLScan | Historical scans, linked resources |
-  | `vt` | VirusTotal | Reputation, detection |
-  | `ab` | AbuseIPDB | IP abuse history |
-  | `cs` | Censys | Port/banner/tech stack (IP only) |
+  | ViewDNS | viewdns.info | Subdomains, reverse IP, IP history |
+  | DNSDumpster | dnsdumpster.com | DNS map and relationships |
+  | URLScan | urlscan.io | Historical scans, linked resources |
+  | VirusTotal | virustotal.com | Reputation and detection |
+  | AbuseIPDB | abuseipdb.com | IP abuse history |
+  | Censys | censys.io | Port/banner/tech stack (IP searches) |
 
   ## Exercise Structure
 
