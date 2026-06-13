@@ -3,6 +3,57 @@
 # Author: presack
 
 # ============================================================
+# INTRO (0 pts)
+# ============================================================
+
+- name: "Kabo Seretse: Background"
+  author: presack
+  category: "Forensics - Kabo Seretse"
+  description: |
+    ## Scenario
+
+    You are a digital forensic analyst at the Directorate on Corruption and Economic Crime (DCEC) in Gaborone, Botswana.
+
+    A tip has been received from Molapo Building Supplies, a construction materials competitor of Kagiso Supplies. The tipster alleges that Kagiso Supplies has been winning procurement contracts they should not be winning, and that there are rumors of corrupt dealings in the award process. Your supervisor has tasked you to investigate.
+
+    As a first step, you decide to examine discarded materials from Kagiso Supplies to look for leads.
+
+    ## Starting Point
+
+    Physical examination of discarded materials at Kagiso Supplies premises, Gaborone. Your instructor will hand these to you.
+
+    ## Evidence Files
+
+    When your instructor advises, download the burner account Google search warrant return from the files server:
+
+    ```
+    /files/kabelo-motsumi/kabo-seretse-operational.zip
+    ```
+
+    Additional search warrant returns and documents will be distributed physically at appropriate phases.
+
+    ## Exercise Structure
+
+    Eight phases, each unlocking the next. Work them in order.
+
+    | Phase | Focus |
+    |---|---|
+    | 1 | Physical lead and blockchain trace |
+    | 2 | Exchange legal return and burner account baseline |
+    | 3 | Burner account content and account correlation |
+    | 4 | Coinbase Egmont return |
+    | 5 | Personal account: identity and login records |
+    | 6 | Personal account: Gmail |
+    | 7 | Personal account: Drive and Keep |
+    | 8 | Behavioral trail |
+
+    Read this, then proceed to Phase 1.
+  value: 0
+  type: standard
+  state: visible
+  hints: []
+
+# ============================================================
 # PHASE 1 — DUMPSTER DIVE AND BLOCKCHAIN TRACE (100 pts each)
 # ============================================================
 

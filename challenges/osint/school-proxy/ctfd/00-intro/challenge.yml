@@ -1,0 +1,47 @@
+name: "School Proxy: Background"
+author: presack
+category: "OSINT - School Proxy"
+description: |
+  ## Scenario
+
+  Your school district's network team has noticed students accessing content that bypasses the web filter. One student's traffic was flagged terminating at **mathteachersforhire.shop**. The domain name sounds innocuous — but something doesn't add up.
+
+  Your job is to investigate this domain, characterize what it's actually doing, and map as much of the related infrastructure as you can find. A full investigation will take you through six pivot levels, multiple IP addresses, and ultimately to a GitHub username — all using passive, tool-assisted reconnaissance only.
+
+  ## Starting Point
+
+  ```
+  mathteachersforhire.shop
+  ```
+
+  ## Tools
+
+  Use StealthOps console mode.
+
+  | Alias | Provider | Why |
+  |---|---|---|
+  | `vd` | ViewDNS | Subdomains, reverse IP, IP history |
+  | `dd` | DNSDumpster | DNS map |
+  | `us` | URLScan | Historical scans, linked resources |
+  | `vt` | VirusTotal | Reputation, detection |
+  | `ab` | AbuseIPDB | IP abuse history |
+  | `cs` | Censys | Port/banner/tech stack (IP only) |
+
+  ## Exercise Structure
+
+  Six levels, each building on the previous. Work them in order.
+
+  | Level | Focus |
+  |---|---|
+  | 1 | Basic recon |
+  | 2 | Pattern recognition |
+  | 3 | First pivot |
+  | 4 | Infrastructure mapping |
+  | 5 | Deep analysis |
+  | 6 | Attribution |
+
+  Read this, then proceed to the first challenge.
+value: 0
+type: standard
+state: visible
+hints: []
