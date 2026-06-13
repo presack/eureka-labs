@@ -111,10 +111,6 @@
     - content: "Follow the outgoing sweep to its second-hop destination address. The address begins bc1q — a native SegWit format used by several major exchanges. Which U.S.-based exchange is most widely used in this region?"
       cost: 15
 
-# ==============================================================
-# PHASE 2 — EXCHANGE LEGAL RETURN AND BURNER ACCOUNT (100 pts)
-# ==============================================================
-
 - name: "Request Legal Process"
   author: presack
   category: "Kickback"
@@ -132,16 +128,21 @@
       data: case_insensitive
   hints: []
 
-- name: "Luno Account Email"
+
+# ==============================================================
+# PHASE 2 — EXCHANGE LEGAL RETURN AND BURNER ACCOUNT (100 pts)
+# ==============================================================
+
+- name: "Luno Information"
   author: presack
   category: "Kickback"
   description: |
-    Your instructor has distributed the Luno legal process return and the burner account search warrant return.
+    You requested legal process from Luno based on your blockchain analysis. Results came back quickly!
 
-    Download the burner account search warrant return from the files server:
-    `/files/kabelo-motsumi/kabo-seretse-operational.zip`
+    Download the Luno return and review it if you have not already done so:
+    `/files/kabelo-motsumi/luno-legal-return.pdf`
 
-    Open the Luno legal process return. What email address is registered to the Luno account linked to the BTC deposit address?
+    Immediately you identify some important data. What email address is registered to the Luno account linked to the BTC deposit address?
   value: 100
   type: standard
   state: visible
@@ -168,7 +169,7 @@
   state: visible
   requirements:
     prerequisites:
-      - "Luno Account Email"
+      - "Luno Information"
   flags:
     - type: static
       content: "28 August 2025"
