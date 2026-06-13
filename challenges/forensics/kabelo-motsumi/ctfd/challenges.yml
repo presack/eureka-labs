@@ -46,15 +46,15 @@
 # PHASE 1 — DUMPSTER DIVE AND BLOCKCHAIN TRACE (100 pts each)
 # ============================================================
 
-- name: "BTC Address from Trash"
+- name: "One man's trash..."
   author: presack
   category: "Kickback"
   description: |
     Your investigation begins with a physical search of discarded materials at Kagiso Supplies in Gaborone.
 
-    Search the trash provided by your instructor. Among the debris you find a handwritten note.
+    You search the trash from Kagiso Supplies. Among the debris you find an important string of characters you immediately identify as important. Typing it may not be fun, but type it exactly for the correct answer!
+    (Hint: Maybe type it in notepad or at least copy it to the clipboard or something so you have it handy. Just in case a typo happens!)
 
-    What Bitcoin address is written on the note?
   value: 100
   type: standard
   state: visible
@@ -80,7 +80,7 @@
   state: visible
   requirements:
     prerequisites:
-      - "BTC Address from Trash"
+      - "One man's trash..."
   flags:
     - type: static
       content: "Luno"
