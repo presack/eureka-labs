@@ -1,10 +1,10 @@
-name: "Starting IP"
+name: "Starting Domain"
 author: presack
 category: "OSINT - School Proxy"
 description: |
-  Your district's network team flagged a student's traffic terminating at **mathteachersforhire.shop**.
+  The IT administrator provided you a domain, mathteachersforhire.shop.
 
-  Run the core StealthOps query against this domain.
+  You start by running basic checks on the domain, with either a core query in StealthOps or using CentralOps.
 
   What IPv4 address does `mathteachersforhire.shop` resolve to?
 value: 50
@@ -15,5 +15,5 @@ flags:
     content: "205.209.125.106"
     data: case_insensitive
 hints:
-  - content: "StealthOps console: `reload mathteachersforhire.shop` — the A record is in the DNS section."
+  - content: "Look up the domain in CentralOps or StealthOps — the A record will show the IPv4 address."
     cost: 10

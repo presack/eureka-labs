@@ -20,14 +20,15 @@ description: |
 
   The following sites are your primary research tools. You can use them directly in your browser, or use **[StealthOps](https://bw.stealthops.dev)** - a web-based OSINT platform that queries many of these sources from a single interface.
 
-  | Tool | URL | What it's good for |
-  |---|---|---|
-  | ViewDNS | viewdns.info | Subdomains, reverse IP, IP history |
-  | DNSDumpster | dnsdumpster.com | DNS map and relationships |
-  | URLScan | urlscan.io | Historical scans, linked resources |
-  | VirusTotal | virustotal.com | Reputation and detection |
-  | AbuseIPDB | abuseipdb.com | IP abuse history |
-  | Censys | censys.io | Port/banner/tech stack (IP searches) |
+  | Tool            | URL                | What it's good for                                        |
+  |-----------------|--------------------|-----------------------------------------------------------|
+  | CentralOps      | centralops.net     | All-in-one domain/IP queries: DNS, WHOIS, traceroute, email validation |
+  | ViewDNS         | viewdns.info       | Subdomains, reverse IP lookups, IP history                |
+  | DNSDumpster     | dnsdumpster.com    | DNS map and visual relationship graph                     |
+  | URLScan         | urlscan.io         | Historical page scans, linked resources, cross-domain correlation |
+  | VirusTotal      | virustotal.com     | Reputation scoring and threat detection                   |
+  | AbuseIPDB       | abuseipdb.com      | IP abuse reports and history                              |
+  | Censys          | censys.io          | Port scans, banners, and tech stack fingerprinting (IP)   |
 
   Type "flag" without the quotes and submit to begin the challenge!
 value: 10
