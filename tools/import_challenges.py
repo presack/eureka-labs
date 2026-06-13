@@ -100,12 +100,12 @@ def import_challenge_set(base_url, token, challenges, label):
         try:
             result = api("post", base_url, token, "/api/v1/challenges", json=payload)
         except RuntimeError as exc:
-            if "manual" in str(exc).lower() or "type" in str(exc).lower():
-                print(f"  ⚠  {name}: 'manual' type not supported, retrying as standard")
+            if "manual" in str(exc).lower() or "type" in str(exc).lower() or "500" in str(exc):
+                print(f"  [!] {name}: 'manual' type not supported, retrying as standard")
                 payload["type"] = "standard"
                 result = api("post", base_url, token, "/api/v1/challenges", json=payload)
             else:
-                print(f"  ✗  {name}: {exc}")
+                print(f"  [x] {name}: {exc}")
                 continue
 
         ch_id = result["id"]
@@ -136,7 +136,7 @@ def import_challenge_set(base_url, token, challenges, label):
 
         flag_count = len(ch.get("flags", []))
         hint_count = len(ch.get("hints", []))
-        print(f"  ✓  [{ch_id:>3}] {name}  ({ch.get('value')} pts, {flag_count} flag(s), {hint_count} hint(s))")
+        print(f"  [+] [{ch_id:>3}] {name}  ({ch.get('value')} pts, {flag_count} flag(s), {hint_count} hint(s))")
 
     # Second pass: wire prerequisites now that all IDs are known
     if pending_prereqs:
@@ -145,7 +145,7 @@ def import_challenge_set(base_url, token, challenges, label):
             ids = [name_to_id[n] for n in prereq_names if n in name_to_id]
             missing = [n for n in prereq_names if n not in name_to_id]
             if missing:
-                print(f"    ⚠  Challenge {ch_id}: could not resolve prerequisites {missing}")
+                print(f"    [!] Challenge {ch_id}: could not resolve prerequisites {missing}")
             if ids:
                 api("patch", base_url, token, f"/api/v1/challenges/{ch_id}",
                     json={"requirements": {"prerequisites": ids}})
