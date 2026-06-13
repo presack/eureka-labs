@@ -1,4 +1,4 @@
-name: "Vocaloid"
+name: "Voc****d"
 author: presack
 category: "OSINT - School Proxy"
 description: |
@@ -10,7 +10,7 @@ type: standard
 state: visible
 flags:
   - type: static
-    content: "Vocaloid"
+    content: "Voc****d"
     data: case_insensitive
 hints:
   - content: "Look for subdomains with Japanese-sounding names — miku, neru, teto. What do those names have in common?"

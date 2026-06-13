@@ -2,9 +2,9 @@ name: "Attribution Domain"
 author: presack
 category: "OSINT - School Proxy"
 description: |
-  Run URLScan enrichment on `frogiesarcade.win`: `enrich us`
+  Run URLScan enrichment on `frogiesarcade.win`.
 
-  One domain appears repeatedly across multiple scan sessions in the URLScan history.
+  One domain appears repeatedly across multiple scan sessions in the URLScan history (besides frogiesarcade.win).
 
   What is it?
 value: 300

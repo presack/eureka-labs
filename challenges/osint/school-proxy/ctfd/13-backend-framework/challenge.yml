@@ -2,7 +2,7 @@ name: "Backend Framework"
 author: presack
 category: "OSINT - School Proxy"
 description: |
-  Run Censys enrichment on `69.164.251.210`: `enrich cs`
+  Run Censys enrichment on `69.164.251.210`.
 
   Censys shows the same application framework running on multiple ports (5000, 8923, 9001, 9327, 13000).
 

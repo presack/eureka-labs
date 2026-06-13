@@ -2,7 +2,7 @@ name: "Primary Domain"
 author: presack
 category: "OSINT - School Proxy"
 description: |
-  Query the IP you found for the `froggies` subdomain directly in StealthOps.
+  You decide to get basic information on the IP you found for the `froggies` subdomain, so you run it directly in StealthOps or CentralOps.
 
   The PTR record (reverse DNS) reveals a subdomain of the operator's actual primary domain. What is the **apex domain** (the root domain, not the subdomain)?
 value: 100

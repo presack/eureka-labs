@@ -2,9 +2,9 @@ name: "GitHub Username"
 author: presack
 category: "OSINT - School Proxy"
 description: |
-  Query `ubghub.org` and run URLScan enrichment: `enrich us`
+  With the query you just ran in URLScan for `ubghub.org`, or by running URLScan enrichment in stealthops, you notices a Cloudflare Pages preview URL, in the format:
 
-  The URLScan history contains a Cloudflare Pages preview URL in the format `<username>-github-io-personal-*.pages.dev`.
+  `<username>-github-io-personal-*.pages.dev`.
 
   What is the GitHub username?
 value: 400

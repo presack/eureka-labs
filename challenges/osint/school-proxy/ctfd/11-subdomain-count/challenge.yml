@@ -2,7 +2,7 @@ name: "Subdomain Count"
 author: presack
 category: "OSINT - School Proxy"
 description: |
-  Run ViewDNS enrichment on `frogiesarcade.win`: `enrich vd`
+  Run ViewDNS enrichment on `frogiesarcade.win`.
 
   How many subdomains does ViewDNS find for `frogiesarcade.win`?
 value: 250
@@ -13,5 +13,5 @@ flags:
     content: "27"
     data: case_insensitive
 hints:
-  - content: "Run `enrich vd` on frogiesarcade.win and count the full subdomain list returned."
+  - content: "Use stealthops to run ViewDNS enrichment or go to viewdns.info, and run frogiesarcade.win. Count the full subdomain list returned. Or better still, look at the subdomain count!"
     cost: 20
