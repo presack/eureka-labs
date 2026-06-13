@@ -74,7 +74,7 @@
 
     Open a public blockchain explorer (blockstream.info or blockchain.com) and search for the address. Examine the transaction history: funds arrive at this address and are later swept onward. Follow the sweep pattern to identify which cryptocurrency exchange holds the destination wallet.
 
-    What exchange is the destination for the funds leaving this address?
+    What exchange is the destination for the funds leaving this address? Provide your answer to an instructor, and they will give you the flag (answer) to move to the next question.
   value: 100
   type: standard
   state: visible
@@ -93,11 +93,10 @@
   author: presack
   category: "Kickback"
   description: |
-    The blockchain trail shows a second outbound address that traces to a different exchange in a different legal jurisdiction.
+    You now know the Kraken exchange you found, for purposes of this scenario, will be considered Luno. That is great, because it is within your jurisdiction. However, the blockchain trail shows a second outbound address that traces to a different exchange in a different legal jurisdiction.
 
     What is that second exchange?
 
-    Note: this exchange is U.S.-regulated. Obtaining records requires routing a request through Egmont — FIA Botswana submits to FinCEN, which compels the exchange under the Bank Secrecy Act. Submit that request to your instructor now alongside your Luno request. The return will arrive later in the investigation.
   value: 100
   type: standard
   state: visible
@@ -116,6 +115,23 @@
 # PHASE 2 — EXCHANGE LEGAL RETURN AND BURNER ACCOUNT (100 pts)
 # ==============================================================
 
+- name: "Request Legal Process"
+  author: presack
+  category: "Kickback"
+  description: |
+    Based on your investigation so far, you should have a couple of different pieces of legal process you would like to request. Discuss with an instructor the legal process you would like to request right now. Please include the provider, the information you are seeking, and the type of legal process needed. Once you have made the correct requests, you will be ready for the next phase! Your instructors will provide the flag.
+  value: 100
+  type: standard
+  state: visible
+  requirements:
+    prerequisites:
+      - "Second Exchange"
+  flags:
+    - type: static
+      content: "Egmont"
+      data: case_insensitive
+  hints: []
+
 - name: "Luno Account Email"
   author: presack
   category: "Kickback"
@@ -131,7 +147,7 @@
   state: visible
   requirements:
     prerequisites:
-      - "Second Exchange"
+      - "Request Legal Process"
   flags:
     - type: static
       content: "k.seretse@kgale-mail.test"
