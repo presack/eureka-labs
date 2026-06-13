@@ -8,7 +8,7 @@
 
 - name: "Kabo Seretse: Background"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     ## Scenario
 
@@ -59,7 +59,7 @@
 
 - name: "BTC Address from Trash"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     Your investigation begins with a physical search of discarded materials at Kagiso Supplies in Gaborone.
 
@@ -79,7 +79,7 @@
 
 - name: "Primary Exchange"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     You have a Bitcoin address. Now trace it.
 
@@ -102,7 +102,7 @@
 
 - name: "Second Exchange"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     The blockchain trail shows a second outbound address that traces to a different exchange in a different legal jurisdiction.
 
@@ -129,7 +129,7 @@
 
 - name: "Luno Account Email"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     Your instructor has distributed the Luno legal process return and the burner account search warrant return.
 
@@ -153,7 +153,7 @@
 
 - name: "Luno Account Created"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     Still on the Luno legal process return.
 
@@ -180,7 +180,7 @@
 
 - name: "Residential IP Slip"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     Open the burner account search warrant return (`kabo-seretse-operational.zip`). Navigate to the Google Account SubscriberInfo folder and open the SubscriberInfo HTML file.
 
@@ -205,7 +205,7 @@
 
 - name: "ISP Subscriber Name"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     You have identified a residential IP that breaks the VPN pattern in the burner account's login records.
 
@@ -232,7 +232,7 @@
 
 - name: "VPN Provider"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     Continue in the `kabo-seretse-operational` search warrant return.
 
@@ -255,7 +255,7 @@
 
 - name: "Linked Real Account"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     Still in the `kabo-seretse-operational` search warrant return.
 
@@ -284,7 +284,7 @@
 
 - name: "Coinbase KYC Name"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     Your instructor has now distributed the Coinbase Egmont return — the result of the FIA Botswana → FinCEN request submitted in Phase 1.
 
@@ -307,7 +307,7 @@
 
 - name: "Coinbase BTC Address"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     Still on the Coinbase Egmont return.
 
@@ -330,7 +330,7 @@
 
 - name: "Wire Account Ending"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     The Egmont return shows that BTC received at the Coinbase address was liquidated to USD and wired to a bank account at Stanbic Bank Botswana across five separate transactions.
 
@@ -355,7 +355,7 @@
 
 - name: "Personal Account Name"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     You now have three independent bridges to a real Google account: the burner's LinkedByCookies correlation, the ISP subscriber name, and the Coinbase KYC name. The initials "KM" from the trash note resolve to the same person.
 
@@ -378,7 +378,7 @@
 
 - name: "Subject Employer"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     Your instructor has also distributed a LinkedIn profile for the subject.
 
@@ -399,7 +399,7 @@
 
 - name: "VPN Cutover Date"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     The personal account's IP Activity table tells a story in chronological order. Early logins come from a residential IP. At a specific point, the IP pattern changes — all subsequent logins come from VPN exits.
 
@@ -432,7 +432,7 @@
 
 - name: "Vendor Email Address"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     Open the personal account Gmail export. Individual emails are in `kabelo-motsumi-personal/Mail/html/` — open them in any web browser.
 
@@ -455,7 +455,7 @@
 
 - name: "Implication Phrase"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     One message in the Kagiso Supplies vendor thread contains an explicit instruction to move communications away from work systems to personal channels.
 
@@ -482,7 +482,7 @@
 
 - name: "Income Tracker Filename"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     Open the Drive export in `kabelo-motsumi-personal/Drive/`. Navigate to the Personal Admin folder.
 
@@ -503,7 +503,7 @@
 
 - name: "Wallet Recovery Note"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     Open the Keep export in `kabelo-motsumi-personal/Keep/`.
 
@@ -530,7 +530,7 @@
 
 - name: "First Legal Search Date"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     Open the search history in `kabelo-motsumi-personal/My Activity/Search/MyActivity.html`.
 
@@ -559,7 +559,7 @@
 
 - name: "Consciousness of Guilt"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     Open the Gemini activity in `kabelo-motsumi-personal/My Activity/`.
 
@@ -586,7 +586,7 @@
 
 - name: "Case Summary"
   author: presack
-  category: "Forensics - Kabo Seretse"
+  category: "Kickback"
   description: |
     **Bonus — open analyst question. Submit your written response to your instructor for scoring.**
 
