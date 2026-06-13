@@ -18,7 +18,7 @@ description: |
 
   ## Tools
 
-  The following sites are your primary research tools. You can use them directly in your browser, or use **[StealthOps](https://bw.stealthops.dev)** — a web-based OSINT platform that queries many of these sources from a single interface.
+  The following sites are your primary research tools. You can use them directly in your browser, or use **[StealthOps](https://bw.stealthops.dev)** - a web-based OSINT platform that queries many of these sources from a single interface.
 
   | Tool | URL | What it's good for |
   |---|---|---|
@@ -29,21 +29,12 @@ description: |
   | AbuseIPDB | abuseipdb.com | IP abuse history |
   | Censys | censys.io | Port/banner/tech stack (IP searches) |
 
-  ## Exercise Structure
-
-  Six levels, each building on the previous. Work them in order.
-
-  | Level | Focus |
-  |---|---|
-  | 1 | Basic recon |
-  | 2 | Pattern recognition |
-  | 3 | First pivot |
-  | 4 | Infrastructure mapping |
-  | 5 | Deep analysis |
-  | 6 | Attribution |
-
-  Read this, then proceed to the first challenge.
-value: 0
+  Type "flag" without the quotes and submit to begin the challenge!
+value: 10
 type: standard
 state: visible
+flags:
+  - type: static
+    content: "flag"
+    data: case_insensitive
 hints: []
