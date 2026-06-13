@@ -2,15 +2,18 @@ name: "Web Server"
 author: presack
 category: "OSINT - School Proxy"
 description: |
-  Run Censys enrichment on the froggies IP (`69.164.251.210`): `enrich cs`
+  Run Censys enrichment on the froggies IP (`69.164.251.210`).
 
-  What **web server software** is listening on port 80? (You can cross-check this against the `Via:` header in the HTTP response from `mathteachersforhire.shop`.)
+  What **web server software** (just the name, not the version) is listening on port 80? (You can cross-check this against the `Via:` header in the HTTP response from `mathteachersforhire.shop`.)
 value: 200
 type: standard
 state: visible
 flags:
   - type: static
     content: "Caddy"
+    data: case_insensitive
+  - type: static
+    content: "caddyserver"
     data: case_insensitive
 hints:
   - content: "Censys banner data identifies the service by name. Alternatively, run `reload mathteachersforhire.shop --headers` and check the Via header."

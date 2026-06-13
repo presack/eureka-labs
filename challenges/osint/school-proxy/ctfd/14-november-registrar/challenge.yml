@@ -14,6 +14,9 @@ flags:
   - type: static
     content: "Spaceship"
     data: case_insensitive
+  - type: static
+    content: "Spaceship, Inc."
+    data: case_insensitive
 hints:
   - content: "Look at the WHOIS data for jorkingit.shop, jorkinschool.online, and lsrecat.cfd. All three share the same registrar."
     cost: 25

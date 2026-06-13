@@ -1,0 +1,21 @@
+name: "What is UBG?"
+author: presack
+category: "OSINT - School Proxy"
+description: |
+  You found that `ubghub.org` keeps appearing in scans of the proxy infrastructure. Before you go deeper, it's worth understanding what this site actually is.
+
+  Head to **[urlscan.io](https://urlscan.io)** and click **Search** in the top navigation bar. Search for `ubghub.org` and open one of the public scan results.
+
+  View the **screenshot** of the page.
+
+  What does **UBG** stand for?
+value: 300
+type: standard
+state: visible
+flags:
+  - type: static
+    content: "unblocked games"
+    data: case_insensitive
+hints:
+  - content: "The screenshot of the page makes it obvious — the full name is right there in the site header."
+    cost: 20
